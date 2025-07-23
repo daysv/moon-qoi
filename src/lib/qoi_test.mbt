@@ -76,3 +76,35 @@ test "read_and_encode_image"{
   }
 }
 
+test (b: @bench.T) {
+  let qoi_rgb = @fs.read_file_to_bytes("resources/rgb_image.qoi")
+
+  let rgb = @fs.read_file_to_bytes("resources/rgb_image.rgb")
+
+  let qoi_rgba = @fs.read_file_to_bytes("resources/rgba_image.qoi")
+
+  let rgba = @fs.read_file_to_bytes("resources/rgba_image.rgb")
+
+  let header = QoiHeader::{
+    width: 70U,
+    height: 53U,
+    channels: 3U,
+    colorspace: 0U 
+  }
+
+  b.bench(fn() { 
+    let _ = encode(header, rgb.to_array())
+  })
+
+  b.bench(fn() { 
+    let _ = decode(qoi_rgb)
+  })
+ 
+  b.bench(fn() { 
+    let _ = encode(header, rgba.to_array())
+  })
+
+  b.bench(fn() { 
+    let _ = decode(qoi_rgba)
+  })
+}
