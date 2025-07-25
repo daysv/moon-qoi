@@ -9,7 +9,7 @@ test "read_and_decode_image"{
       assert_eq(Bytes::from_array(data), target)
     }
     Err(error) => {
-      assert_true(false, msg=error)
+      fail(error)
     }
   }
 }
@@ -32,7 +32,7 @@ test "read_and_encode_image"{
       assert_eq(data, target)
     }
     Err(error) => {
-      assert_true(false, msg=error)
+      fail(error)
     }
   }
 }
@@ -48,7 +48,7 @@ test "read_and_decode_image"{
       assert_eq(Bytes::from_array(data), target)
     }
     Err(error) => {
-      assert_true(false, msg=error)
+      fail(error)
     }
   }
 }
@@ -71,7 +71,7 @@ test "read_and_encode_image"{
       assert_eq(data, target)
     }
     Err(error) => {
-      assert_true(false, msg=error)
+      fail(error)
     }
   }
 }
