@@ -9,7 +9,7 @@ test "read_and_decode_image"{
       assert_eq(Bytes::from_array(data), target)
     }
     Err(error) => {
-      println("Decode failed: \{error}")
+      assert_true(false, msg=error)
     }
   }
 }
@@ -32,7 +32,7 @@ test "read_and_encode_image"{
       assert_eq(data, target)
     }
     Err(error) => {
-      println("Decode failed: \{error}")
+      assert_true(false, msg=error)
     }
   }
 }
@@ -48,7 +48,7 @@ test "read_and_decode_image"{
       assert_eq(Bytes::from_array(data), target)
     }
     Err(error) => {
-      println("Decode failed: \{error}")
+      assert_true(false, msg=error)
     }
   }
 }
@@ -61,7 +61,7 @@ test "read_and_encode_image"{
   let header = QoiHeader::{
     width: 70U,
     height: 53U,
-    channels: 3U,
+    channels: 4U,
     colorspace: 0U 
   }
  
@@ -71,7 +71,7 @@ test "read_and_encode_image"{
       assert_eq(data, target)
     }
     Err(error) => {
-      println("Decode failed: \{error}")
+      assert_true(false, msg=error)
     }
   }
 }
